@@ -2,8 +2,9 @@ from morpion import morpion
 
 m = morpion()
 
-m.grille = [["X", " ", "O"],
-            ["O", " ", "X"],
+m.grille = [["X", "X", "O"],
+            ["O", "O", "X"],
             ["X", "O", "X"]]
 
-print(m.TerminalTest())
+print(m.matchNul())
+print(m.gagnant())

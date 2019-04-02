@@ -26,6 +26,12 @@ class morpion:
             res = self.identiqueList(self.grille[i][2-i] for i in range(3))
         return res
 
+    def TerminalTest (self):
+        res = True
+        for i in range(3):
+            if " " in self.grille[i]:
+                res = False
+        return res
         
     def identiqueList(self, liste):
         for i in liste:
@@ -34,3 +40,5 @@ class morpion:
                 res = False
         return res
 
+    def utility (self):
+        return 0

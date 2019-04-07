@@ -53,3 +53,16 @@ class morpion:
         else :
             print("error")
             return False
+    
+    def Actions(self):
+        acts = []
+        for i in range(3):
+            for j in range(3):
+                if(self.grille[i][j]==' '):
+                    acts.append([i,j])
+        return acts
+
+    def Results(self,grille,position,joueur):
+        grille[position[0]][position[1]]=joueur
+
+

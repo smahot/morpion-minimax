@@ -3,14 +3,14 @@ from morpion import morpion
 m = morpion()
 
 m.tour = "X"
-m.grille = [[" ", " ", " "],
-            [" ", " ", " "],
-            [" ", " ", " "]]
+m.grille = [["O", "X", "X"],
+            ["X", "X", "O"],
+            ["O", "O", " "]]
 
 
 print("Début de la partie")
 
-while m.gagnant() == False :
+while not (m.gagnant() or m.matchNul()) :
     print(m.display())
     print(m.tour)
     print("Entrez les coordonnées de la case :")

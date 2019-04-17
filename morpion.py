@@ -94,6 +94,9 @@ class morpion:
         return best
     
     def Max(self):
+        if self.gagnant() != False or self.matchNul:
+            return self.utility()
+
         actions = list()
         actions.append(self.Actions())
         actions.append(list())
@@ -115,6 +118,9 @@ class morpion:
 
 
     def Min(self):
+        if self.gagnant() != False or self.matchNul:
+            return self.utility()
+
         actions = list()
         actions.append(self.Actions())
         actions.append(list())

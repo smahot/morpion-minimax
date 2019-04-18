@@ -3,9 +3,9 @@ from morpion import morpion
 m = morpion()
 
 m.tour = "X"
-m.grille = [["O", "X", "X"],
-            ["X", "X", "O"],
-            ["O", "O", " "]]
+m.grille = [[" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]]
 
 
 print("Début de la partie")

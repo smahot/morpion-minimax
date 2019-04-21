@@ -2,11 +2,12 @@ from morpion import morpion
 
 m = morpion()
 
+''' Initialisation manuelle possible
 m.tour = "X"
 m.grille = [[" ", " ", " "],
             [" ", " ", " "],
             [" ", " ", " "]]
-
+'''
 
 print("Début de la partie")
 

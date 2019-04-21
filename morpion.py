@@ -90,7 +90,8 @@ class morpion:
         best.append(actions[1][index])
 
         print("listes actions :")
-        print(actions)
+        print(actions[0])
+        print(actions[1])
         return best
     
     def Max(self):

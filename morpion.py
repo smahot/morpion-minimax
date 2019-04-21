@@ -1,3 +1,6 @@
+# Application de l'algorithme KNN au dataset Iris
+# Fait par Steve MAHOT et Matthieu LOUF
+
 class morpion:
 
     def __init__(self):

@@ -5,8 +5,13 @@ class morpion:
         self.tour = "X"
 
     def display(self):
+        print('    0   1   2')
+        print("  -------------")
         for i in range(3):
-            print(self.grille[i])
+            ligne= str(i)+" |"
+            for j in range(3):
+                ligne+=' '+self.grille[i][j]+ ' |'
+            print(ligne,"\n  -------------")
 
     def tourSuivant(self):
         if self.tour == "X":
@@ -89,9 +94,8 @@ class morpion:
         best.append(actions[0][index])
         best.append(actions[1][index])
 
-        print("listes actions :")
-        print(actions[0])
-        print(actions[1])
+        print("Actions possibles :",actions[0])
+        print("Scores correspondants :",actions[1])
         return best
     
     def Max(self):

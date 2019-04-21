@@ -1,29 +1,93 @@
+# Application de l'algorithme KNN au dataset Iris
+# Fait par Steve MAHOT et Matthieu LOUF
+
+#------------ IMPORTATION MODULES -------------#
+import random as rnd
+import os
+#classe du morpion dans le fichier morpion.py
 from morpion import morpion
 
-m = morpion()
+#------------ DEFINITION FONCTIONS -------------#
 
-''' Initialisation manuelle possible
-m.tour = "X"
-m.grille = [[" ", " ", " "],
-            [" ", " ", " "],
-            [" ", " ", " "]]
-'''
+#fonction pour nettoyer la console
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
-print("Début de la partie")
+def humain_vs_humain():
+    m = morpion()
 
-while not (m.gagnant() or m.matchNul()) :
-    print(m.display())
-    print(m.tour)
-    print("Entrez les coordonnées de la case :")
-    print("Calcul des actions possibles (peut durer 10s)")
-    print(m.MinMax())
-    x = int(input("Entrez x:"))
-    y = int(input("Entrez y:"))
-    m.Results([x,y],m.tour)
-    print("changement effectué")
-    m.tourSuivant()
+    print("Début de la partie : \n")
 
-print(m.grille)
-print("fin du jeu, le gagnant est :")
-print(m.gagnant())
+    while not (m.gagnant() or m.matchNul()) :
+        
+        print("Au tour du joueur \'",m.tour,"\' :")
+        m.display()
 
+        print("-> Calcul des actions possibles (peut durer 10s)\n")
+        print("Coordonnée conseillée :",m.MinMax(),"\n")
+        x = int(input("Jouer à la coordonnée x = "))
+        y = int(input("                      y = "))
+
+        m.Results([x,y],m.tour)
+        m.tourSuivant()
+
+        cls()
+        print("\n")
+
+    m.display()
+    gagnant=m.gagnant()
+    if gagnant==False:
+        print("Match nul :/\n")
+    else:
+        print("Le gagnant est le joueur \'",m.gagnant(),"\'! :D\n")
+
+def humain_vs_ia():
+    m = morpion()
+
+    rnd.seed()
+    type_joueur =['joueur','ia']
+    joueur_actuel = rnd.randint(0,1)
+
+    print("Début de la partie : \n")
+
+    while not (m.gagnant() or m.matchNul()) :
+
+        print("Au tour de ",type_joueur[joueur_actuel]," \'",m.tour,"\' :")
+        m.display()
+
+        if(type_joueur[joueur_actuel]=='joueur'):
+            x = int(input("Jouer à la coordonnée x = "))
+            y = int(input("                      y = "))
+            m.Results([x,y],m.tour)
+        
+        else :
+            print("-> Calcul des actions possibles (peut durer 10s)\n")
+            choix_ia=m.MinMax()
+            m.Results([choix_ia[0][0],choix_ia[0][1]],m.tour)
+        
+        m.tourSuivant()
+        joueur_actuel+=1
+        if joueur_actuel==2:
+            joueur_actuel=0
+
+        cls()
+        print("\n")
+
+    m.display()
+    gagnant=m.gagnant()
+    if gagnant==False:
+        print("Match nul :/\n")
+    else:
+        print("Le gagnant est \'",m.gagnant(),"\'! :D\n")
+
+def menu():
+    print("\n 1 : Humain vs Humain assisté par ordinateur\n 2 : Humain vs IA\n")
+    choix = int(input("Mode de jeu : "))
+
+    if choix==1:
+        humain_vs_humain()
+    if choix==2:
+        humain_vs_ia()
+
+#------------ Lancement du menu -------------#
+menu()

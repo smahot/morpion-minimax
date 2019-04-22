@@ -1,4 +1,4 @@
-# Application de l'algorithme KNN au dataset Iris
+# Application de l'algorithme minimax au morpion
 # Fait par Steve MAHOT et Matthieu LOUF
 
 #------------ IMPORTATION MODULES -------------#
